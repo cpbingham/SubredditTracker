@@ -10,4 +10,4 @@ function fileDate() {
   return date;
 }
 
-module.exports = {fileDate};
+module.exports = fileDate;
