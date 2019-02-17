@@ -8,6 +8,6 @@ function fileDate() {
   date = date.slice(0, 10);
   date = date.replace(/ /g, '_');
   return date;
-}
+} // end fileDate
 
 module.exports = fileDate;
