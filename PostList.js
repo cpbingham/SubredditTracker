@@ -43,14 +43,26 @@ class PostList {
     Searches PostList for a given post.
 
     @param otherPost Reddit post you'd like to search PostList for.
-    @return true if PostList contains the specific post, false otherwise. 
+    @return true if PostList contains the specific post, false otherwise.
   **/
   contains(otherPost) {
-    for (let i = 0; i < this.arr.length; i++) {
+    for (let i = 0; i < this.arr.length; i++)
       if (this.arr[i].compare(otherPost))
         return true;
-    }
     return false;
+  }
+
+  /**
+    Compares two different PostLists to each other.
+
+    @param otherPostList The other post list you are comparing this post list to.
+    @return Array of Reddit posts that are in the PostList but not the other (The New Posts).
+  **/
+  compare(otherPostList) {
+    let result = [];
+    for (let i = 0; i < otherPostList.arr.length; i++)
+      if (!(this.contains(otherPostList.arr[i])))
+        result.push(otherPostList.arr[i]);
   }
 
 } // end PostList class
