@@ -10,9 +10,12 @@ const fs = require('fs');
 const promiseWriteFile = (fileName, newPosts) => {
   new Promise((resolve, reject) => {
     fs.appendFile(fileName, newPosts, (err) => {
+      // If there is an error writing to the file, reject promise and provide error message.
       if (err) {
         reject(`Error writing to file: ${err.message}`);
       }
+
+      // Otherwise resolve the promise.
       resolve();
     });
   });
