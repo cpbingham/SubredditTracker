@@ -65,6 +65,16 @@ class PostList {
         result.push(otherPostList.arr[i]);
   }
 
+  /**
+    Adds an array of new Post objects to an existing PostLists
+
+    @param newPosts The array of new Posts you'd like to add.
+  **/
+  addPosts(newPosts) {
+    for (let i = 0; i < newPosts.length; i++)
+      this.arr.push(newPosts[i]);
+  }
+
 } // end PostList class
 
 module.exports = PostList;
