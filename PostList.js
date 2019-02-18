@@ -63,6 +63,7 @@ class PostList {
     for (let i = 0; i < otherPostList.arr.length; i++)
       if (!(this.contains(otherPostList.arr[i])))
         result.push(otherPostList.arr[i]);
+    return result;
   }
 
   /**
