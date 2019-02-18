@@ -26,6 +26,19 @@ class PostList {
     return result;
   }
 
+  /**
+    Converts PostList class into readable string.
+    @return result String representing a list of Reddit posts.
+  **/
+  toString() {
+    let result = '';
+    for (let i = 0; i < this.arr.length; i++) {
+      result += this.arr[i].toString();
+      result += '\n';
+    }
+    return result;
+  }
+
 } // end PostList class
 
 module.exports = PostList;

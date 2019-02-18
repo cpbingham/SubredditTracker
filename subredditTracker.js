@@ -15,11 +15,20 @@ const date = fileDate();
 //Create fileName in which subreddit data will be stored
 const fileName = `${subreddit}_${date}.txt`;
 
+let recentPosts;
 
 async function subredditTracker() {
   try {
     const jsonData = await promiseHTTPResponse(url);
     const posts = new PostList(jsonData);
+
+    let newPosts;
+
+    if (!recentPosts) {
+      recentPosts = new PostList(jsonData);
+      newPosts = recentPosts.toString();
+      console.log(newPosts);
+    }
   } catch (error) {
     console.log(error);
   }
