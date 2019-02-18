@@ -13,7 +13,7 @@ class PostList {
     on the JSON data received from the HTTP Request.
 
     @param json 25 Reddit Posts in JSON format.
-    @return result Array of 25 Post objects created from JSON data.
+    @return Array of 25 Post objects created from JSON data.
   **/
   static createList(json) {
     let result = [];
@@ -28,7 +28,7 @@ class PostList {
 
   /**
     Converts PostList class into readable string.
-    @return result String representing a list of Reddit posts.
+    @return String representing a list of Reddit posts.
   **/
   toString() {
     let result = '';
@@ -37,6 +37,20 @@ class PostList {
       result += '\n';
     }
     return result;
+  }
+
+  /**
+    Searches PostList for a given post.
+
+    @param otherPost Reddit post you'd like to search PostList for.
+    @return true if PostList contains the specific post, false otherwise. 
+  **/
+  contains(otherPost) {
+    for (let i = 0; i < this.arr.length; i++) {
+      if (this.arr[i].compare(otherPost))
+        return true;
+    }
+    return false;
   }
 
 } // end PostList class
