@@ -9,36 +9,35 @@ const https = require('https');
 
   @param url specifies url to make GET requet to.
 **/
-const promiseHTTPResponse = (url) => new Promise((resolve, reject) => {
-  https.get(url, (res) => {
-    // HTTP Response Status Code
-    const statusCode = res.statusCode;
+const promiseHTTPResponse = (url) =>
+  new Promise((resolve, reject) => {
+    https.get(url, (res) => {
+      // HTTP Response Status Code
+      const statusCode = res.statusCode;
 
-    // If the status code is not 200 (OK), reject promise
-    if(statusCode !== 200){
-      reject('Invalid Subreddit');
-    }
-
-    // Read data into string
-    let rawData = '';
-    res.on('data', (chunk) => {
-      rawData += chunk;
-    });
-
-    res.on('end', () => {
-      // Once you have the entire page as a string, try to parse to JSON
-      try {
-        const parsedData = JSON.parse(rawData);
-
-        // If successful, resolve promise with data in JSON format
-        resolve(parsedDate);
-
-      } catch (e) {
-        // If page isn't in JSON format, reject promise
-        reject('Data not in JSON format');
+      // If the status code is not 200 (OK), reject promise
+      if (statusCode !== 200){
+        reject('Invalid Subreddit');
       }
-    })
-  });
+
+      // Read rawData data into string
+      res.setEncoding('utf-8');
+      let rawData = '';
+      res.on('data', (chunk) => {
+        rawData += chunk;
+      });
+      res.on('end', () => {
+        // Once you have the entire page, try to parse to JSON
+        try {
+          const parsedData = JSON.parse(rawData);
+          // If successful, resolve promise with data in JSON format
+          resolve(parsedData);
+        } catch (e) {
+          // If page isn't in JSON format, reject promise
+          reject('Data not in JSON format');
+        }
+      });
+    });
 }); //end promiseHTTPResponse
 
 module.exports = promiseHTTPResponse;
