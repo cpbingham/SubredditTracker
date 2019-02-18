@@ -50,7 +50,15 @@ class Post {
     return id + titleLine + authorLine + dateLine + contentBody + urlLine;
   }
 
+  /**
+    Compares two posts on the basis of id.
+
+    @param otherPost The other Post class object to compare.
+  **/
+  compare(otherPost) {
+    return (this.id === otherPost.id) ? true : false;
+  }
+
 } // end Post class
 
-let test = new Post('test', 'test', 'test', 'test', 1550383962, 'test');
-console.log(test);
+module.exports = Post;
