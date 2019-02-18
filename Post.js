@@ -28,6 +28,7 @@ class Post {
     DOW Mon DD YYYY HH:MM.
 
     @param date Milliseconds since epoch.
+    @return newDate String representing the date of the post was made.
   **/
   static convertDate(date) {
     let newDate = new Date();
@@ -39,6 +40,7 @@ class Post {
 
   /**
     Converts Post class to a readable string.
+    @return result String represting single post.
   **/
   toString() {
     const id = `## ID: ${this.id} ##`;
@@ -47,13 +49,15 @@ class Post {
     const dateLine = `     ${this.date}\n`;
     const contentBody = `     ${this.content}\n`;
     const urlLine = `     ${this.url}\n`;
-    return id + titleLine + authorLine + dateLine + contentBody + urlLine;
+    const result = id + titleLine + authorLine + dateLine + contentBody + urlLine;
+    return result;
   }
 
   /**
     Compares two posts on the basis of id.
 
     @param otherPost The other Post class object to compare.
+    @return Boolean true if ids are the same, false otherwise. 
   **/
   compare(otherPost) {
     return (this.id === otherPost.id) ? true : false;
