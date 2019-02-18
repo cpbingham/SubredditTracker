@@ -37,6 +37,10 @@ const promiseHTTPResponse = (url) =>
           reject('Data not in JSON format');
         }
       });
+
+    // If GET request throws an error, reject promise with given error.
+    }).on('error', (e) => {
+      reject(`Got error: ${e.message}`);
     });
 }); //end promiseHTTPResponse
 
