@@ -5,7 +5,7 @@ const Post = require('./Post.js');
 **/
 class PostList {
   constructor(json) {
-    this.arr = PostList.createArray(json);
+    this.arr = PostList.createList(json);
   }
 
   /**
@@ -27,3 +27,5 @@ class PostList {
   }
 
 } // end PostList class
+
+module.exports = PostList;

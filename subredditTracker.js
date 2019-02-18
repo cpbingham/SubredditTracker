@@ -1,4 +1,5 @@
 const fileDate = require('./fileDate.js');
+const PostList = require('./PostList.js');
 const promiseHTTPResponse = require('./promiseHTTPResponse.js');
 
 // Get desired SubReddit name as command line argument
@@ -18,6 +19,7 @@ const fileName = `${subreddit}_${date}.txt`;
 async function subredditTracker() {
   try {
     const jsonData = await promiseHTTPResponse(url);
+    const posts = new PostList(jsonData);
   } catch (error) {
     console.log(error);
   }
