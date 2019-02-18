@@ -1,6 +1,7 @@
 const fileDate = require('./fileDate.js');
 const PostList = require('./PostList.js');
 const promiseHTTPResponse = require('./promiseHTTPResponse.js');
+const promiseWriteFile = require('./promiseWriteFile.js');
 
 // Get desired SubReddit name as command line argument
 // TODO: Create some console I/O to ask user for input
@@ -27,7 +28,7 @@ async function subredditTracker() {
     if (!recentPosts) {
       recentPosts = new PostList(jsonData);
       newPosts = recentPosts.toString();
-      console.log(newPosts);
+      await promiseWriteFile(fileName, newPosts);
     }
   } catch (error) {
     console.log(error);
