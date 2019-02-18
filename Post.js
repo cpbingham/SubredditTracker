@@ -27,7 +27,7 @@ class Post {
     Helper function for Post constructor to convert date to format of
     DOW Mon DD YYYY HH:MM.
 
-    @param date Milliseconds since epoch. 
+    @param date Milliseconds since epoch.
   **/
   static convertDate(date) {
     let newDate = new Date();
@@ -35,6 +35,19 @@ class Post {
     newDate = newDate.toString();
     newDate = newDate.slice(0, 21);
     return newDate;
+  }
+
+  /**
+    Converts Post class to a readable string.
+  **/
+  toString() {
+    const id = `## ID: ${this.id} ##`;
+    const titleLine = `\n#### ${this.title} ####\n`;
+    const authorLine = `#### Posted By: ${this.author} ####\n`;
+    const dateLine = `     ${this.date}\n`;
+    const contentBody = `     ${this.content}\n`;
+    const urlLine = `     ${this.url}\n`;
+    return id + titleLine + authorLine + dateLine + contentBody + urlLine;
   }
 
 } // end Post class
